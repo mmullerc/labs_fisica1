@@ -12,7 +12,7 @@ import sys
 #Variables pre definidas
 #########################################
 #Angulo de disparo
-angulo_de_disparo = 40
+angulo_de_disparo = 65
 #Velocidad inicial
 velocidad_inicial = 9
 #########################################
@@ -91,15 +91,12 @@ def iniciar_mundo():
             flag = True
         t += dt
 
-    while flag:
-        tiempo = 0
-        caja.pos = (distancia_proyectil + 0.9, altura_inicial + 0.5 * gravedad *tiempo**2)
-        caja2.pos = (distancia_proyectil + 0.3, altura_inicial + 1.1 * gravedad *tiempo**2)
-        caja3.pos = (distancia_proyectil + 0.4, altura_inicial + 0.8 * gravedad *tiempo**2)
-        tiempo += dt
-        rate(50)
-        if tiempo > 10:
-            flag = False
-
+    tiempo = 0
+    while tiempo < 0.6:
+        rate(400)
+        caja.pos = (distancia_proyectil + tiempo + 1.6, + altura_inicial + t - 0.4 * gravedad*tiempo**2 , -3)
+        caja2.pos = (distancia_proyectil + tiempo + 0.2, +  altura_inicial + t - 0.3 * gravedad*tiempo**2, 1)
+        caja3.pos = (distancia_proyectil + tiempo + 0.3, + altura_inicial + t - 0.4 * gravedad*tiempo**2, 2)
+        tiempo += 0.001
 #inizializamos el script
 iniciar_programa()

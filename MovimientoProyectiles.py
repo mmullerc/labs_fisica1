@@ -3,6 +3,7 @@
 #16 de abdril del 2017
 #Asignacion pracitca 4 - Movimiento Proyectiles
 
+# -*- coding: utf-8 -*-
 from visual import *
 from math import *
 import cmath
@@ -18,7 +19,7 @@ angulo_de_disparo = 45
 ventana = display(title='Movimiento Proyectiles.',
       width=1024, height=768,
      center=(5,0,0), background=(color.black),autocenter=true)
-    
+
 #Variables Globales
 gravedad = 9.8
 dt = 0.005
@@ -31,7 +32,7 @@ def iniciar_programa():
     iniciar_mundo()
 #Inicia la parte grafica de la aplicacion
 def iniciar_mundo():
-    
+
     star1 = sphere(pos=(7,2.5,1), radius=0.01)
     star1.color=(color.yellow)
 
@@ -88,10 +89,10 @@ def iniciar_mundo():
 
     #Etiqueta de la velocidad inicial
     etiquetaVelocidadInicial = label(pos=(0.4, 2.3 , 0), text='Velocidad inicial: ' + str(velocidad_inicial)  + ' m/s', color=color.white, border= 10, radius=8)
-    
+
     #Etiqueta del angulo inicial
-    etiquetaAnguloInicial = label(pos=(0.2, 1.5 , 0), text='Angulo inicial: ' + str(angulo_de_disparo)+'', color=color.white, border= 10, radius=8)
-    
+    etiquetaAnguloInicial = label(pos=(0.2, 1.5 , 0), text='Angulo inicial: ' + str(angulo_de_disparo)+u'\u00b0', color=color.white, border= 10, radius=8)
+
     #Base del cannon
     base = box(pos=(0.4,-0.1,0.5), height=0.1, width=0.8, material=materials.wood)
     base.color=(1,0.9,0.3)
@@ -105,13 +106,13 @@ def iniciar_mundo():
 
     #Calculo de tiempo en el eje Y
     tiempoY = (velocidad_inicial * math.sin(math.radians(angulo_de_disparo))) / gravedad
-    
+
     #Calculo de la posicion maxima Y
     posicionY = (velocidad_inicial * math.sin(math.radians(angulo_de_disparo))) * tiempoY - 0.5 * gravedad * math.pow(tiempoY, 2)
-    
+
     #Calculo de la posicion maxima X para el eje Y
     posicionX = velocidad_inicial * math.cos(math.radians(angulo_de_disparo)) * tiempoY
-    
+
     #Calculo del alcance de la pelota
     rango =  velocidad_inicial * math.cos(math.radians(angulo_de_disparo)) * tiempo_total_vuelo
 
@@ -174,4 +175,3 @@ if angulo_de_disparo > 180 or angulo_de_disparo <= 0 :
 	errorAngulo = label(pos=(8, -4 , 0), text='El angulo tiene que ser mayor a 0 y menor a 180', color=color.white, border= 10, radius=8)
 else:
     iniciar_programa()
-
